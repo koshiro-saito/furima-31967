@@ -1,24 +1,45 @@
-# README
+＃　FurimaのER図
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##  ユーザー管理機能テーブル
 
-Things you may want to cover:
+| Column      | Type        | Options                        |
+| ----------- | ----------- | ------------------------------ |
+| ユーザー名    | string      | NOT NULL                       |
+| ニックネーム  | string      | NOT NULL                       |
+| メールアドレス | string      | NOT NULL                       |
+| パスワード    | string      | NOT NULL                       |
 
-* Ruby version
+### Association
+- has_many :商品出品機能
+- belongs_to :商品購入機能
 
-* System dependencies
+## 商品出品機能テーブル
 
-* Configuration
+| Column      | Type        | Options                        |
+| ----------- | ----------- | ------------------------------ |
+| ユーザー名    | references  | NOT NULL                       |
+| 画像         |             | NOT NULL                       |
+| 品名         | string      | NOT NULL                       |
+| 説明         | text        | NOT NULL                       |
+| カテゴリ      | string      | NOT NULL                       |
+| 状態         | string      | NOT NULL                       |
+| 配送料負担    | string      | NOT NULL                       |
+| 発送元地域    | string      | NOT NULL                       |
+| 発送L/T      | string      | NOT NULL                       |
+| 価格         | string      | NOT NULL                       |
 
-* Database creation
+### Association
+- belongs_to :商品購入機能
+- belongs_to :ユーザー管理機能
 
-* Database initialization
+## 商品購入機能テーブル
 
-* How to run the test suite
+| Column            | Type        | Options                        |
+| ----------------- | ----------- | ------------------------------ |
+| ユーザー名         | references  | NOT NULL                       |
+| クレジットカード情報 | references  | NOT NULL                       |
+| 配送先             | string      | NOT NULL                       |
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Association
+- belongs_to :ユーザー管理機能
+- belongs_to :商品出品機能
