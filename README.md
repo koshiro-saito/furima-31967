@@ -1,45 +1,55 @@
 ＃　FurimaのER図
 
-##  ユーザー管理機能テーブル
+##  usersテーブル
 
 | Column      | Type        | Options                        |
 | ----------- | ----------- | ------------------------------ |
-| ユーザー名    | string      | NOT NULL                       |
-| ニックネーム  | string      | NOT NULL                       |
-| メールアドレス | string      | NOT NULL                       |
-| パスワード    | string      | NOT NULL                       |
+| user        | string      | null: false                    |
+| nickname    | string      | null: false                    |
+| email       | string      | null: false                    |
+| password    | string      | null: false                    |
 
 ### Association
-- has_many :商品出品機能
-- belongs_to :商品購入機能
+- has_many :products
+- belongs_to :purchase managements
 
-## 商品出品機能テーブル
+## productsテーブル
 
-| Column      | Type        | Options                        |
-| ----------- | ----------- | ------------------------------ |
-| ユーザー名    | references  | NOT NULL                       |
-| 画像         |             | NOT NULL                       |
-| 品名         | string      | NOT NULL                       |
-| 説明         | text        | NOT NULL                       |
-| カテゴリ      | string      | NOT NULL                       |
-| 状態         | string      | NOT NULL                       |
-| 配送料負担    | string      | NOT NULL                       |
-| 発送元地域    | string      | NOT NULL                       |
-| 発送L/T      | string      | NOT NULL                       |
-| 価格         | string      | NOT NULL                       |
-
-### Association
-- belongs_to :商品購入機能
-- belongs_to :ユーザー管理機能
-
-## 商品購入機能テーブル
-
-| Column            | Type        | Options                        |
-| ----------------- | ----------- | ------------------------------ |
-| ユーザー名         | references  | NOT NULL                       |
-| クレジットカード情報 | references  | NOT NULL                       |
-| 配送先             | string      | NOT NULL                       |
+| Column          | Type        | Options                        |
+| --------------- | ----------- | ------------------------------ |
+| user            | references  | null: false                    |
+| image           |             |                                |
+| product_name    | string      | null: false                    |
+| description     | text        | null: false                    |
+| category        | string      | null: false                    |
+| status          | string      | null: false                    |
+| delivery_fee    | string      | null: false                    |
+| shipment_source | string      | null: false                    |
+| time_to_ship    | string      | null: false                    |
+| price           | string      | null: false                    |
 
 ### Association
-- belongs_to :ユーザー管理機能
-- belongs_to :商品出品機能
+- belongs_to :users
+- belongs_to :purchase managements
+
+## purchase managementsテーブル
+
+| Column           | Type        | Options                        |
+| ---------------- | ----------- | ------------------------------ |
+| user             | references  | null: false                    |
+| product          | string      | null: false                    |
+| shipping_address | string      | null: false                    |
+
+### Association
+- belongs_to :users
+- belongs_to :shipping addresses
+
+## shipping addressesテーブル
+
+| Column       | Type        | Options                        |
+| ------------ | ----------- | ------------------------------ |
+| user         | references  | null: false                    |
+| address      | string      | null: false                    |
+
+### Association
+- belongs_to :purchase managements
