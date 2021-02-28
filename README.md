@@ -11,11 +11,11 @@
 | first_name      | string      | null: false                    |
 | last_name_kana  | string      | null: false                    |
 | first_name_kana | string      | null: false                    |
-| birthday        | string      | null: false                    |
+| birthday        | date        | null: false                    |
 
 ### Association
 - has_many :products
-- belongs_to :purchase history
+- has_many :purchase_history
 
 ## productsテーブル
 
@@ -32,10 +32,10 @@
 | price              | integer     | null: false                    |
 
 ### Association
-- belongs_to :users
-- belongs_to :purchase history
+- belongs_to :user
+- has_many :purchase_history
 
-## purchase historyテーブル
+## purchase_historyテーブル
 
 | Column           | Type        | Options                        |
 | ---------------- | ----------- | ------------------------------ |
@@ -43,20 +43,21 @@
 | product          | references  | null: false                    |
 
 ### Association
-- has_many :users
-- has_many :products
+- belongs_to :user
+- belongs_to :product
+- has_many  :buyer_information
 
-## buyer informationテーブル
+## buyer_informationテーブル
 
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| user          | references | null: false                    |
-| postal_code   | integer    | null: false                    |
-| prefecture    | integer    | null: false                    |
-| municipality  | string     | null: false                    |
-| address       | string     | null: false                    |
-| building_name | string     | null: false                    |
-| phone_number  | integer    | null: false                    |
+| Column           | Type       | Options                        |
+| ---------------- | ---------- | ------------------------------ |
+| purchase_history | references | null: false                    |
+| postal_code      | integer    | null: false                    |
+| prefecture       | integer    | null: false                    |
+| municipality     | string     | null: false                    |
+| address          | string     | null: false                    |
+| building_name    | string     | null: false                    |
+| phone_number     | integer    | null: false                    |
 
 ### Association
-- has_one :purchase history
+- belongs_to :purchase_history
