@@ -33,7 +33,7 @@
 
 ### Association
 - belongs_to :user
-- has_one :purchase_histories
+- has_one :purchase_history
 
 ## purchase_historiesテーブル
 
@@ -45,9 +45,9 @@
 ### Association
 - belongs_to :user
 - belongs_to :product
-- has_one :buyer_information
+- has_one :buyer
 
-## buyer_informationテーブル
+## buyersテーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
