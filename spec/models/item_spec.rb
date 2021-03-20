@@ -6,8 +6,6 @@ RSpec.describe Item, type: :model do
       @item = FactoryBot.build(:item)
     end
 
-
-
     context '商品出品ができる時' do
 
       it 'image・item_name・description・category_id・status_id・delivery_fee_id・prefecture_id・time_to_ship_id・priceが存在すれば登録できること' do
@@ -15,8 +13,6 @@ RSpec.describe Item, type: :model do
       end
     
     end
-
-
 
     context '商品出品ができない時' do
 
@@ -99,8 +95,6 @@ RSpec.describe Item, type: :model do
       end
 
     end
-
-
 
   end
 end
