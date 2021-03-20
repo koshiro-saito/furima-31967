@@ -33,31 +33,31 @@ RSpec.describe Item, type: :model do
       end
 
       it 'category_idが空では登録できないこと' do
-        @item.category_id = '1'
+        @item.category_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Category must be other than 1")
       end
 
       it 'status_idが空では登録できないこと' do
-        @item.status_id = '1'
+        @item.status_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Status must be other than 1")
       end
 
       it 'delivery_fee_idが空では登録できないこと' do
-        @item.delivery_fee_id = '1'
+        @item.delivery_fee_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee must be other than 1")
       end
 
       it 'prefecture_idが空では登録できないこと' do
-        @item.prefecture_id = '1'
+        @item.prefecture_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
       end
 
       it 'time_to_ship_idが空では登録できないこと' do
-        @item.time_to_ship_id = '1'
+        @item.time_to_ship_id = 1
         @item.valid?
         expect(@item.errors.full_messages).to include("Time to ship must be other than 1")
       end
@@ -69,14 +69,14 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが300円以下では登録できないこと' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be greater than or equal to 300")
       end
 
 
       it 'priceが9999999円以上では登録できないこと' do
-        @item.price = '10000000'
+        @item.price = 10000000
         @item.valid?
         expect(@item.errors.full_messages).to include("Price must be less than or equal to 9999999")
       end
