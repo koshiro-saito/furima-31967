@@ -46,7 +46,6 @@ class ItemsController < ApplicationController
   end
 
   def move_to_toppage
-    set_item
     if current_user.id != @item.user_id
       redirect_to root_path
     end
