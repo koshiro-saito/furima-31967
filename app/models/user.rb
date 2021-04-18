@@ -4,6 +4,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  # userモデルのバリデーション
   with_options presence: true do
     validates :nickname
     validates :password, format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i }
@@ -17,6 +18,7 @@ class User < ApplicationRecord
       validates :first_name_kana
     end
   end
+  # ここまでuserモデルのバリデーション
 
   has_many :items
   has_many :purchase_histories
