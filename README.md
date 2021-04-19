@@ -14,7 +14,7 @@
 | birthday           | date        | null: false                    |
 
 ### Association
-- has_many :products
+- has_many :items
 - has_many :purchase_histories
 
 ## itemsテーブル
@@ -44,7 +44,7 @@
 
 ### Association
 - belongs_to :user
-- belongs_to :product
+- belongs_to :item
 - has_one :buyer
 
 ## buyersテーブル
