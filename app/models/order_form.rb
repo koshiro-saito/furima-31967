@@ -17,8 +17,8 @@ class OrderForm
   # buyerのバリデーション
 
   def save
-    purchase_history = PurchaseHistory.create!(item_id: item_id, user_id: user_id)
-    Buyer.create!(purchase_history_id: purchase_history.id, postal_code: postal_code, prefecture_id: prefecture_id,
+    purchase_history = PurchaseHistory.create(item_id: item_id, user_id: user_id)
+    Buyer.create(purchase_history_id: purchase_history.id, postal_code: postal_code, prefecture_id: prefecture_id,
                   municipality: municipality, address: address, building_name: building_name, phone_number: phone_number)
   end
 end
