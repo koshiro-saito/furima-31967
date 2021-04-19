@@ -1,7 +1,7 @@
 class OrderForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :buyer_id, :postal_code, :prefecture_id, :municipality, :address, :building_name,
-                :phone_number, :price, :token
+  attr_accessor :user_id, :item_id, :postal_code, :prefecture_id, :municipality, :address, :building_name,
+                :phone_number, :token
 
   # buyerのバリデーション
   with_options presence: true do
